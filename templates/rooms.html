@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #4682B4;
+        }
+        h3 {
+            font-size: 18px;
+            color: 696969;
+            margin: 5px 0;
+        }
+        h4 {
+            font-size: 14px;
+            margin: 7px 0;
+            color: #808080;
+        }
+        .room-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: #F8F8FF;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .room-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .first-message
+        {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2F4F4F;
+            padding: 10px;
+            font-size: 35px;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Доступные комнаты</title>
+</head>
+<body>
+
+    <div class="first-message">
+        Доступные комнаты у данного отеля
+    </div>
+
+    {% for room in rooms%}
+    <div class="room-container">
+        <img src="{{ url_for('static', path='images/' + room.image_id|string + '.webp') }}"
+             alt="Фото комнаты" width="320">
+        <div class="room-info">
+            <h1>Имя комнаты: {{room.name}}</h1>
+            <h4>Цена за день: {{room.price}}</h4>
+            <h4>Услуги: {{room.services | join(', ')}}</h4>
+            <h4>Количество свободных комнат: {{room.rooms_left}}</h4>
+            <h3>Итоговая цена: {{room.total_cost}}</h3>
+        </div>
+    </div>
+    {% endfor %}
+
+</body>
+</html>

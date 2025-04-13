@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Доступные Отели</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #4682B4;
+        }
+        h3 {
+            font-size: 18px;
+            color: #777;
+            margin: 5px 0;
+        }
+        .hotel-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: #F8F8FF;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .hotel-container img {
+            border-radius: 8px 0 0 8px;
+        }
+        .hotel-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .first-message
+        {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2F4F4F;
+            padding: 10px;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="first-message">
+        Доступные отели
+    </div>
+
+    {% for hotel in hotels %}
+    <div class="hotel-container">
+        <img src="{{ url_for('static', path='images/' + hotel.image_id|string + '.webp') }}"
+             alt="Фото отеля" width="320">
+        <div class="hotel-info">
+            <h1>{{ hotel.name }}</h1>
+            <h3>{{ hotel.location }}</h3>
+            <h3>Количество номером в отеле: {{ hotel.rooms_quantity }}</h3>
+            <h3>Количество свободных номеров: {{ hotel.rooms_left}}</h3>
+            <h4>Услуги: {{ hotel.services | join(', ') }}</h4>
+        </div>
+    </div>
+    {% endfor %}
+
+</body>
+</html>
