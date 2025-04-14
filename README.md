@@ -109,12 +109,12 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from app.bookings.models import Booking
-from app.config import settings
-from app.database.db import Base
-from app.hotels.models import Hotel
-from app.rooms.models import Room
-from app.users.models import User
+from bookings.models import Booking
+from config import settings
+from database.db import Base
+from hotels.models import Hotel
+from rooms.models import Room
+from users.models import User
 
 
 config = context.config
@@ -141,7 +141,7 @@ target_metadata = Base.metadata
 - Запустить проект:
 
 ``` bash
-    uvicorn app.main:app --reload   
+    uvicorn main:app --reload   
 ```
 
 - Запустить Redis:
@@ -154,13 +154,13 @@ target_metadata = Base.metadata
 - Запустить Celery:
 
 ``` bash
-    celery -A app.tasks.celery:celery worker --loglevel=INFO --pool=solo
+    celery -A tasks.celery_app:celery worker --loglevel=INFO --pool=solo
 ```
 
 - Запустить Flower:
 
 ``` bash
-    celery -A app.tasks.tasks:celery flower
+    celery -A tasks.celery_app:celery flower
 ```
 
 #### Автор
