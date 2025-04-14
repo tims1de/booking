@@ -2,3 +2,10 @@ migrations/
 alembic.ini
 .env
 .env-non-dev
+
+.idea/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
