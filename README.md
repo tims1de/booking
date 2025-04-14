@@ -105,9 +105,9 @@ from sqlalchemy import engine_from_config, pool
 
 from bookings.models import Booking
 from config import settings
-from database.db import Base
+from database import Base
 from hotels.models import Hotel
-from rooms.models import Room
+from hotels.rooms.models import Room
 from users.models import User
 
 
