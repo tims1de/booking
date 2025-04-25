@@ -57,23 +57,23 @@
 - Склонировать репозиторий:
 
 ```bash
-   git clone <название репозитория>
+   git clone <ссылка на репозиторий>
 ```
 
 Cоздать и активировать виртуальное окружение:
 
 Команды для установки виртуального окружения на Mac или Linux:
 
-```bash
+```
    python3 -m venv env
-   source env/bin/activate
+   source env\bin\activate
 ```
 
 Команды для Windows:
 
-```bash
+```
    python -m venv venv
-   source venv/Scripts/activate
+   source venv\Scripts\activate
 ```
 
 - Создать файл .env по образцу:
